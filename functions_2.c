@@ -33,3 +33,16 @@ void add_func(stack_t **head, unsigned int count)
 	*head = ptr->next;
 	free(ptr);
 }
+
+/**
+  *nop_func- nothing
+  *@head: stack head
+  *@count: line count
+  *
+  *Return: nothing
+  */
+void nop_func(stack_t **head, unsigned int count)
+{
+	(void) count;
+	(void) head;
+}
