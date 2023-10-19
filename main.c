@@ -1,7 +1,7 @@
 #define _POSIX_C_SOURCE 200809L
 #include "monty.h"
 
-global_var_t global_var = {0, NULL, NULL, NULL};
+global_var_t global_var = {NULL, NULL, NULL, 0};
 
 /**
  * main - program entry point
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 		{
 			exec_opcode(content, &head, count, file);
 		}
-		free(content);
+		/*free(content);*/
 	}
 	free_stack(head);
 	fclose(file);

@@ -1,3 +1,4 @@
+
 #include "monty.h"
 
 /**
@@ -15,13 +16,10 @@ void push_func(stack_t **head, unsigned int count)
 	{
 		if (global_var.arg[0] == '-')
 			i++;
-		while (global_var.arg[i] != '\0')
+		for (; global_var.arg[i] != '\0'; i++)
 		{
 			if (global_var.arg[i] > 57 || global_var.arg[i] < 48)
-			{
-				flag++;
-				i++;
-			}
+				flag = 1;
 		}
 		if (flag == 1)
 		{
