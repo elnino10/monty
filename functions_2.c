@@ -77,3 +77,45 @@ void sub_func(stack_t **head, unsigned int count)
 	*head = temp->next;
 	free(temp);
 }
+
+/**
+ * div_func - divides the top two elements of stack.
+ * @head: stack head
+ * @count: line count
+ *
+ * Return: nothing
+ */
+void div_func(stack_t **head, unsigned int count)
+{
+	stack_t *ptr;
+	int len = 0;
+	int temp;
+
+	ptr = *head;
+	while (ptr)
+	{
+		ptr = ptr->next;
+		len++;
+	}
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d: can't div, stack too short\n", count);
+		fclose(global_var.file);
+		free(global_var.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	ptr = *head;
+	if (ptr->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", count);
+		fclose(global_var.file);
+		free(global_var.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	temp = ptr->next->n / ptr->n;
+	ptr->next->n = temp;
+	*head = ptr->next;
+	free(ptr);
+}

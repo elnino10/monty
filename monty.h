@@ -75,5 +75,6 @@ void swap_func(stack_t **head, unsigned int count);
 void add_func(stack_t **head, unsigned int count);
 void nop_func(stack_t **head, unsigned int count);
 void sub_func(stack_t **head, unsigned int count);
+void div_func(stack_t **head, unsigned int count);
 
 #endif
