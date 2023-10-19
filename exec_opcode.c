@@ -13,7 +13,7 @@ int exec_opcode(char *content, stack_t **head, unsigned int count, FILE *file)
 {
 	instruction_t instruction[] = {
 		{"push", push_func}, {"pall", pall_func}, {"pint", pint_func},
-		{"pop", pop_func}, {NULL, NULL}
+		{"pop", pop_func}, {"swap", swap_func}, {NULL, NULL}
 	};
 	char *_opcode;
 	int i = 0;

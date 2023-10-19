@@ -69,5 +69,6 @@ void push_func(stack_t **head, unsigned int count);
 void pall_func(stack_t **head, unsigned int count);
 void pint_func(stack_t **head, unsigned int count);
 void pop_func(stack_t **head, unsigned int count);
+void swap_func(stack_t **head, unsigned int count);
 
 #endif
