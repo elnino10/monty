@@ -1,27 +1,13 @@
 #ifndef MONTY_HEADER
 #define MONTY_HEADER
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
 #include <fcntl.h>
 #include <sys/types.h>
 #include <ctype.h>
-
-/**
- * struct instruction_s - opcode and its function
- * @opcode: the opcode
- * @f: function to handle the opcode
- *
- * Description: opcode and its function
- * for stack, queues, LIFO, FIFO
- */
-typedef struct instruction_s
-{
-	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
-} instruction_t;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -38,6 +24,21 @@ typedef struct stack_s
 	struct stack_s *prev;
 	struct stack_s *next;
 } stack_t;
+
+/**
+ * struct instruction_s - opcode and its function
+ * @opcode: the opcode
+ * @f: function to handle the opcode
+ *
+ * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO
+ */
+typedef struct instruction_s
+{
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
+} instruction_t;
+
 
 /**
  * struct global_var_s - global variables
@@ -59,5 +60,11 @@ extern global_var_t global_var;
 /*Opcode execution file*/
 int exec_opcode(char *content, stack_t **head, unsigned int count, FILE *file);
 void free_stack(stack_t *head);
+stack_t *add_dnodeint(stack_t **head, const int n);
+stack_t *add_dnodeint_end(stack_t **head, const int n);
+
+/*functions_1 files*/
+void push_func(stack_t **head, unsigned int count);
+void pall_func(stack_t **head, unsigned int count);
 
 #endif

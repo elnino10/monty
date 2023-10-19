@@ -1,4 +1,6 @@
+#define _POSIX_C_SOURCE 200809L
 #include "monty.h"
+
 global_var_t global_var = {0, NULL, NULL, NULL};
 
 /**
@@ -12,9 +14,9 @@ int main(int argc, char *argv[])
 {
 	FILE *file;
 	ssize_t n_read = 1;
-	char *content;
+	char *content = NULL;
 	unsigned int count;
-	size_t *file_size = 0;
+	size_t file_size = 0;
 	stack_t *head = NULL;
 
 	if (argc != 2)
@@ -23,7 +25,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	file = fopen(argv[1], "r");
-	global_var.arg = file;
+	global_var.file = file;
 	if (!file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
@@ -31,7 +33,6 @@ int main(int argc, char *argv[])
 	}
 	while (n_read > 0)
 	{
-		content = NULL;
 		n_read = getline(&content, &file_size, file);
 		global_var.content = content;
 		count++;
@@ -41,6 +42,8 @@ int main(int argc, char *argv[])
 		}
 		free(content);
 	}
+	free_stack(head);
+	fclose(file);
 
 	return (0);
 }

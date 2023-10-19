@@ -12,6 +12,8 @@
 int exec_opcode(char *content, stack_t **head, unsigned int count, FILE *file)
 {
 	instruction_t instruction[] = {
+		{"push", push_func},
+		{"pall", pall_func},
 		{NULL, NULL}
 	};
 	char *_opcode;
@@ -58,4 +60,74 @@ void free_stack(stack_t *head)
 		free(head);
 		head = temp;
 	}
+}
+
+/**
+ * add_dnodeint - adds a new node at the beginning of a dlistint_t list
+ * @head: pointer to the head node pointer
+ * @n: value of member n to be added to list
+ *
+ * Return: address of the new element, or NULL if it failed
+ */
+stack_t *add_dnodeint(stack_t **head, const int n)
+{
+	stack_t *new_node;
+
+	new_node = malloc(sizeof(stack_t));
+	if (!new_node)
+		return (NULL);
+
+	new_node->n = n;
+	new_node->prev = NULL;
+	if (*head == NULL)
+	{
+		*head = new_node;
+		new_node->next = NULL;
+	}
+	else
+	{
+		(*head)->prev = new_node;
+		new_node->next = *head;
+		*head = new_node;
+	}
+
+	return (*head);
+}
+
+/**
+ * add_dnodeint_end - adds a new node at the end of a dlistint_t list
+ * @head: pointer to the head node pointer
+ * @n: member n to be added to list
+ *
+ * Return: address of the new element, or NULL if it failed
+ */
+stack_t *add_dnodeint_end(stack_t **head, const int n)
+{
+	stack_t *curr_node, *new_node;
+
+	new_node = malloc(sizeof(stack_t));
+	if (!new_node)
+		return (NULL);
+
+	new_node->n = n;
+	new_node->next = NULL;
+
+	curr_node = *head;
+	if (*head == NULL)
+	{
+		*head = new_node;
+		new_node->prev = NULL;
+	}
+	else
+	{
+		while (curr_node->next != NULL)
+		{
+			curr_node = curr_node->next;
+		}
+
+		curr_node->next = new_node;
+		new_node->prev = curr_node;
+	}
+
+	return (new_node);
 }
