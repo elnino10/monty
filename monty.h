@@ -68,5 +68,6 @@ stack_t *add_dnodeint_end(stack_t **head, const int n);
 /*functions_1 files*/
 void push_func(stack_t **head, unsigned int count);
 void pall_func(stack_t **head, unsigned int count);
+void pint_func(stack_t **head, unsigned int count);
 
 #endif

@@ -1,4 +1,3 @@
-
 #include "monty.h"
 
 /**
@@ -16,10 +15,11 @@ void push_func(stack_t **head, unsigned int count)
 	{
 		if (global_var.arg[0] == '-')
 			i++;
-		for (; global_var.arg[i] != '\0'; i++)
+		while (global_var.arg[i] != '\0')
 		{
 			if (global_var.arg[i] > 57 || global_var.arg[i] < 48)
 				flag = 1;
+			i++;
 		}
 		if (flag == 1)
 		{
@@ -65,4 +65,24 @@ void pall_func(stack_t **head, unsigned int count)
 		printf("%d\n", temp->n);
 		temp = temp->next;
 	}
+}
+
+/**
+ * pint_func - prints stack top
+ * @head: pointer to stack head pointer
+ * @count: line count
+ *
+ * Return: nothing
+ */
+void pint_func(stack_t **head, unsigned int count)
+{
+	if (*head == NULL)
+	{
+		fprintf(stderr, "L%u: can't pint, stack empty\n", count);
+		fclose(global_var.file);
+		free(global_var.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*head)->n);
 }
