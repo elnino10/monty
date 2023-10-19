@@ -86,3 +86,27 @@ void pint_func(stack_t **head, unsigned int count)
 	}
 	printf("%d\n", (*head)->n);
 }
+
+/**
+ * pop_func - prints the top
+ * @head: stack head
+ * @count: line_number
+ *
+ * Return: nothing
+ */
+void pop_func(stack_t **head, unsigned int count)
+{
+	stack_t *temp;
+
+	if (*head == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", count);
+		fclose(global_var.file);
+		free(global_var.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	temp = *head;
+	*head = temp->next;
+	free(temp);
+}

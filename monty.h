@@ -32,8 +32,7 @@ typedef struct stack_s
  * @opcode: the opcode
  * @f: function to handle the opcode
  *
- * Description: opcode and its function
- * for stack, queues, LIFO, FIFO
+ * Description: opcode and functions for stacks and queues
  */
 typedef struct instruction_s
 {
@@ -69,5 +68,6 @@ stack_t *add_dnodeint_end(stack_t **head, const int n);
 void push_func(stack_t **head, unsigned int count);
 void pall_func(stack_t **head, unsigned int count);
 void pint_func(stack_t **head, unsigned int count);
+void pop_func(stack_t **head, unsigned int count);
 
 #endif
