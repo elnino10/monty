@@ -9,6 +9,8 @@
 #include <sys/types.h>
 #include <ctype.h>
 
+#define  _GNU_SOURCE
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -50,10 +52,10 @@ typedef struct instruction_s
  */
 typedef struct global_var_s
 {
-	int lifo;
 	FILE *file;
 	char *arg;
 	char *content;
+	int lifo;
 }  global_var_t;
 extern global_var_t global_var;
 

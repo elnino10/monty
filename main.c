@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 {
 	FILE *file;
 	ssize_t n_read = 1;
-	char *content = NULL;
+	char *content;
 	unsigned int count;
 	size_t file_size = 0;
 	stack_t *head = NULL;
@@ -33,6 +33,7 @@ int main(int argc, char *argv[])
 	}
 	while (n_read > 0)
 	{
+		content = NULL;
 		n_read = getline(&content, &file_size, file);
 		global_var.content = content;
 		count++;
@@ -40,7 +41,7 @@ int main(int argc, char *argv[])
 		{
 			exec_opcode(content, &head, count, file);
 		}
-		/*free(content);*/
+		free(content);
 	}
 	free_stack(head);
 	fclose(file);
