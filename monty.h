@@ -76,5 +76,9 @@ void add_func(stack_t **head, unsigned int count);
 void nop_func(stack_t **head, unsigned int count);
 void sub_func(stack_t **head, unsigned int count);
 void div_func(stack_t **head, unsigned int count);
+void mul_func(stack_t **head, unsigned int count);
+
+/*functions_3 files*/
+void mul_func(stack_t **head, unsigned int count);
 
 #endif
