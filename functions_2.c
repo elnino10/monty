@@ -35,14 +35,45 @@ void add_func(stack_t **head, unsigned int count)
 }
 
 /**
-  *nop_func- nothing
-  *@head: stack head
-  *@count: line count
-  *
-  *Return: nothing
-  */
+ *nop_func- nothing
+ *@head: pointer to stack head
+ *@count: line count
+ *
+ *Return: nothing
+ */
 void nop_func(stack_t **head, unsigned int count)
 {
 	(void) count;
 	(void) head;
+}
+
+/**
+ *sub_func- sustration
+ *@head: stack head pointer
+ *@count: line count
+ *
+ *Return: nothing
+ */
+void sub_func(stack_t **head, unsigned int count)
+{
+	stack_t *temp;
+	int diff;
+	int node;
+
+	temp = *head;
+	for (node = 0; temp != NULL; node++)
+		temp = temp->next;
+	if (node < 2)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", count);
+		fclose(global_var.file);
+		free(global_var.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	temp = *head;
+	diff = temp->next->n - temp->n;
+	temp->next->n = diff;
+	*head = temp->next;
+	free(temp);
 }
