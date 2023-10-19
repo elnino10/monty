@@ -80,5 +80,6 @@ void mul_func(stack_t **head, unsigned int count);
 
 /*functions_3 files*/
 void mod_func(stack_t **head, unsigned int count);
+void pchar_func(stack_t **head, unsigned int count);
 
 #endif

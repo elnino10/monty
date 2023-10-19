@@ -42,3 +42,34 @@ void mod_func(stack_t **head, unsigned int count)
 	*head = ptr->next;
 	free(ptr);
 }
+
+/**
+ * pchar_func - prints the char at the top of the stack
+ * @head: pointer to stack head
+ * @count: line count
+ *
+ * Return: nothing
+ */
+void pchar_func(stack_t **head, unsigned int count)
+{
+	stack_t *ptr;
+
+	ptr = *head;
+	if (!ptr)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", count);
+		fclose(global_var.file);
+		free(global_var.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	if (ptr->n > 127 || ptr->n < 0)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", count);
+		fclose(global_var.file);
+		free(global_var.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", ptr->n);
+}
