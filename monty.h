@@ -81,5 +81,13 @@ void mul_func(stack_t **head, unsigned int count);
 /*functions_3 files*/
 void mod_func(stack_t **head, unsigned int count);
 void pchar_func(stack_t **head, unsigned int count);
+void pstr_func(stack_t **head, unsigned int count);
+void rotl_func(stack_t **head, unsigned int count);
+void rotr_func(stack_t **head, unsigned int count);
+
+/*functions_4 files*/
+void stack_func(stack_t **head, unsigned int count);
+void queue_func(stack_t **head, unsigned int count);
+
 
 #endif

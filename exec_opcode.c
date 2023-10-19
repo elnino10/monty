@@ -16,7 +16,8 @@ int exec_opcode(char *content, stack_t **head, unsigned int count, FILE *file)
 		{"pop", pop_func}, {"swap", swap_func}, {"add", add_func},
 		{"nop", nop_func}, {"sub", sub_func}, {"div", div_func},
 		{"mul", mul_func}, {"mod", mod_func}, {"pchar", pchar_func},
-		{NULL, NULL}
+		{"pstr", pstr_func}, {"rotl", rotl_func}, {"rotr", rotr_func},
+		{"stack", stack_func}, {"queue", queue_func}, {NULL, NULL}
 	};
 	char *_opcode;
 	int i = 0;

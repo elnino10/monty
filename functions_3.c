@@ -73,3 +73,84 @@ void pchar_func(stack_t **head, unsigned int count)
 	}
 	printf("%c\n", ptr->n);
 }
+
+/**
+ * pstr_func - prints the string starting at the top of the stack
+ * @head: pointer to stack head
+ * @count: line count
+ *
+ * Return: nothing
+ */
+void pstr_func(stack_t **head, unsigned int count)
+{
+	stack_t *top;
+	(void)count;
+
+	top = *head;
+	while (top)
+	{
+		if (top->n > 127 || top->n <= 0)
+		{
+			break;
+		}
+		printf("%c", top->n);
+		top = top->next;
+	}
+	printf("\n");
+}
+
+/**
+ *rotl_func- rotates the stack to the top
+ *@head: pointer to stack head
+ *@count: line count
+ *
+ *Return: nothing
+ */
+void rotl_func(stack_t **head, unsigned int count)
+{
+	stack_t *ptr = *head, *temp;
+	(void)count;
+
+	if (*head == NULL || (*head)->next == NULL)
+	{
+		return;
+	}
+	temp = (*head)->next;
+	temp->prev = NULL;
+	while (ptr->next != NULL)
+	{
+		ptr = ptr->next;
+	}
+	ptr->next = *head;
+	(*head)->next = NULL;
+	(*head)->prev = ptr;
+	(*head) = temp;
+}
+
+/**
+ *rotr_func- rotates the stack to the bottom
+ *@head: pointer to stack head
+ *@count: line count
+ *
+ *Return: nothing
+ */
+void rotr_func(stack_t **head, unsigned int count)
+{
+	stack_t *temp;
+	(void)count;
+
+	temp = *head;
+	if (*head == NULL || (*head)->next == NULL)
+	{
+		return;
+	}
+	while (temp->next)
+	{
+		temp = temp->next;
+	}
+	temp->next = *head;
+	temp->prev->next = NULL;
+	temp->prev = NULL;
+	(*head)->prev = temp;
+	(*head) = temp;
+}
