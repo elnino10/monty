@@ -71,4 +71,7 @@ void pint_func(stack_t **head, unsigned int count);
 void pop_func(stack_t **head, unsigned int count);
 void swap_func(stack_t **head, unsigned int count);
 
+/*functions_2 files*/
+void add_func(stack_t **head, unsigned int count);
+
 #endif
