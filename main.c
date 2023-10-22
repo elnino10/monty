@@ -43,7 +43,6 @@ int main(int argc, char *argv[])
 		}
 		free(content);
 	}
-	printf("Count = %u\n", count);
 	free_stack(head);
 	fclose(file);
 
