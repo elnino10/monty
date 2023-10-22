@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 	FILE *file;
 	ssize_t n_read = 1;
 	char *content;
-	unsigned int count;
+	unsigned int count = 0;
 	size_t file_size = 0;
 	stack_t *head = NULL;
 
@@ -43,6 +43,7 @@ int main(int argc, char *argv[])
 		}
 		free(content);
 	}
+	printf("Count = %u\n", count);
 	free_stack(head);
 	fclose(file);
 
